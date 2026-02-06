@@ -1,0 +1,33 @@
+Resume Parsing and Data Extraction System/
+│
+├── venv/                      # Virtual environment (do not edit)
+│
+├── app/                       # Backend application
+│   ├── __init__.py
+│   ├── main.py                # Flask entry point
+│   │
+│   ├── parser/                # Resume parsing logic
+│   │   ├── __init__.py
+│   │   ├── pdf_parser.py      # PDF text extraction
+│   │   ├── docx_parser.py     # DOC/DOCX text extraction
+│   │   └── extractor.py       # Email, phone, skills extraction
+│   │
+│   ├── services/              # Business logic services
+│   │   ├── __init__.py
+│   │   └── excel_service.py   # Excel generation logic
+│
+├── templates/                 # HTML files (UI)
+│   └── index.html
+│
+├── static/                    # CSS / JS (optional)
+│   └── style.css
+│
+├── uploads/                   # Uploaded resumes
+│
+├── output/                    # Generated Excel files
+│
+├── requirements.txt           # Python dependencies
+│
+├── README.md                  # Project documentation
+│
+└── .gitignore                 # Ignore venv, uploads, output

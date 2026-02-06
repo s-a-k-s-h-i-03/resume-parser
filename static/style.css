@@ -1,0 +1,178 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        /* Upload Section */
+        .upload-box {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        .upload-box input[type="file"] {
+            margin-top: 10px;
+        }
+
+        .upload-box button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Action Buttons */
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .actions button {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .download { background-color: #28a745; }
+        .undo { background-color: #fd7e14; }
+        .reset { background-color: #dc3545; }
+
+        .actions button:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            text-align: left;
+            padding: 10px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+            white-space: pre-line;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .delete-btn {
+            color: red;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        /* .footer-note {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #777;
+            text-align: right;
+        } */
+        footer {
+    margin-top: 40px;
+    padding: 12px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+}
+
+   .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+
+.modal-content {
+    position: relative;
+    background: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 6px;
+
+    /* 🔴 THIS LINE IS CRITICAL */
+    pointer-events: auto;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10001;
+
+    /* 🔴 FORCE CLICK */
+    pointer-events: auto;
+}
+
+
+
+.modal-content pre {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+.choose-btn {
+    padding: 8px 16px;
+    background-color: #141c24;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.choose-btn:hover {
+    background-color: #030f1c4c;
+}

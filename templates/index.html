@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Parsing and Data Extraction System</title>
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='icon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Resume Parsing and Data Extraction System</h1>
+
+    <!-- Upload Section -->
+    <div class="upload-box">
+    <form method="POST" enctype="multipart/form-data">
+        <strong>Upload Resume (PDF / DOCX / PNG / JPG)</strong><br><br>
+
+        <!-- Hidden real input -->
+        <input
+            type="file"
+            id="resumeFile"
+            name="resume"
+            accept=".pdf,.docx,.png,.jpg,.jpeg"
+            required
+            hidden
+        >
+
+        <!-- Styled button -->
+        <label for="resumeFile" class="choose-btn">
+            Choose File
+        </label>
+
+        <!-- File name -->
+        <span id="fileName">No file chosen</span>
+
+        <br><br>
+        <button type="submit">Upload & Parse</button>
+    </form>
+</div>
+
+    {% if data %}
+    <!-- Action Buttons -->
+    <div class="actions">
+        <a href="/download"><button class="download">Download Excel</button></a>
+        <a href="/undo"><button class="undo">Undo Last Delete</button></a>
+
+        <form action="/reset" method="post"
+              onsubmit="return confirm('This will delete ALL records. Continue?');">
+            <button class="reset">Reset All Data</button>
+        </form>
+    </div>
+
+   <!-- Data Table -->
+
+{% if data %}
+
+<table>
+    <tr>
+        {% for key in data[0].keys() %}
+            <th>{{ key }}</th>
+        {% endfor %}
+        <th>Action</th>
+    </tr>
+
+    {% for row in data %}
+    <tr>
+        {% for key, value in row.items() %}
+
+            {% if key in ["Education", "Certifications", "Experience", "Publications", "Awards"] %}
+                <td>
+                    <button class="view-btn"
+                        onclick="openTextModal(`{{ value | e }}`, '{{ key }}')">
+                        View Detail
+                    </button>
+                </td>
+            {% else %}
+                <td>{{ value }}</td>
+            {% endif %}
+
+        {% endfor %}
+
+        <td>
+            <a class="delete-btn"
+               href="/delete/{{ loop.index0 }}"
+               onclick="return confirm('Delete this record?')">✖</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
+    {% else %}
+        <p>No data available. Please upload a resume to get started.</p>
+    {% endif %}
+
+
+
+<!-- Modal -->
+<div id="textModal" class="modal">
+    <div class="modal-content">
+        <span class="close">×</span>
+        <h3 id="textModalTitle"></h3>
+        <pre id="textModalBody"></pre>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer>
+    © <span id="year"></span> Resume Parsing & Data Extraction System™  
+    | Created by Jignesh Thacker & Sakshi Singh
+</footer>
+                               
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
